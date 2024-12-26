@@ -1,16 +1,10 @@
 Package: bss2
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Authors@R: c(
-    person(
-      "Jane", "Doe",
-      email = "jane@example.com",
-      role = c("aut", "cre")
-    )
-  )
+Title: Statistical Analysis Tools for Writing Papers ---------
+Version: 0.2.2
+Author: BSS
 Description: More about what it does (maybe more than one line).
     Continuation lines should be indented.
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
