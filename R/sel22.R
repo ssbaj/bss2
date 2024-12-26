@@ -1,5 +1,5 @@
 sel22 <- function(dataset_name, ...) {
-
+ 
 if (base::missing(dataset_name)) {
 cat(" \033[1;36m# 명령문 예제 ---------- \033[0m", '\n' )
 return( cat(" \033[1;36mdf <- sel22(Adata, 변수1, 변수2) \033[0m", '\n' )) }

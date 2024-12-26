@@ -1,18 +1,16 @@
 mkdum <- function(name_dataset, select_columns) {
 
 if (base::missing(name_dataset)) {
-cat(" \033[1;36m# 명령문 예제 ---------- \033[0m", '\n' )
+cat(" \033[1;36m# Examples ---------- \033[0m", '\n' )
 cat("\033[1;36m Adata<-as.data.frame(Adata) \033[0m", '\n')
-return( cat("\033[1;36m 명령문: Adata<-mkdum22(Adata, 변수명) \033[0m", '\n') )
+return( cat("\033[1;36m COMMAND: Adata<-mkdum22(Adata, variable) \033[0m", '\n') )
 }
 
 
-##-----------------------------------
-# 변수명을 컬럼 번호로 변경시키는 함수
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
-n<-length(tmp_colnames) # DataSet의 총변수 갯수
+n<-length(tmp_colnames)
 
 for(i in 1:n){
 if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
@@ -24,7 +22,6 @@ var_name <- deparse(substitute(select_columns))
 
 
 ##----------------------------------------
-# find_col2()를 사용해 컬럼번호 찾기
 select_columns<-find_col2(name_dataset, var_name)
 ##----------------------------------------
 

@@ -1,5 +1,5 @@
 addcomma <- function(input_string) {
-# 공백 제거
+
 no_spaces <- gsub(" ", ",", input_string)
 no_spaces <- gsub("\t", ",", no_spaces)
 no_spaces <- gsub(" ,", ",", no_spaces)

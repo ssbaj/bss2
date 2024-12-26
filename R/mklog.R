@@ -1,18 +1,17 @@
 mklog<-function(name_dataset, select_columns) {
 
 if (base::missing(name_dataset)) {
-cat(" df<-mklog(df, 변수명) *NOTE: 변수명 for natural log-transformation ", '\n')
-    cat(" \033[1;34m# 변수의 레코드값은 1.0 이상이여야만 합니다. 먼저 min()을 사용해 레코드값을 점검하세요. \033[0m ", '\n')
-return(cat(" \033[1;34m# 로그값 예시: log(0)=-Inf, log(0.1)=-2.30, log(1.0)=0, log(2)=0.69, log(10)=2.30 \033[0m ") ) }
+cat(" df<-mklog(df, variable) *NOTE: variable to make natural log-transformation ", '\n')
+    cat(" \033[1;34m# Values should be greater than 1.0. Please check the value with min(). \033[0m ", '\n')
+return(cat(" \033[1;34m# example of logs : log(0)=-Inf, log(0.1)=-2.30, log(1.0)=0, log(2)=0.69, log(10)=2.30 \033[0m ") ) }
 
 if(class(name_dataset)!="data.frame") {
-    return(cat(" CORRECT COMMAND: df<-mklog(df, 변수명)", '\n')) }
+    return(cat(" CORRECT COMMAND: df<-mklog(df, variable)", '\n')) }
 
-# 변수명을 문자열로 만들기
+
 select_columns <- deparse(substitute(select_columns))    
 
 ##-----------------------------------
-# 변수명을 컬럼 번호로 변경시키는 함수
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
@@ -24,7 +23,6 @@ if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
 }
 
 ##----------------------------------------
-# find_col2()를 사용해 컬럼번호 찾기
 if(is.numeric(select_columns)==F) {select_columns<-find_col2(name_dataset, select_columns) }
 ##----------------------------------------
 

@@ -2,14 +2,14 @@ mkgroup<-function(name_dataset, select_columns, CuttingNumber, sign=1) {
 
 if (base::missing(name_dataset)) {
      cat("\033[1;31m # ---------------------------------------------------------------------- ", '\n')
-     cat("\033[1;34m cn<-quantile(df$변수명, c(.25, .5, .75)) \033[0m", '\n')
+     cat("\033[1;34m cn<-quantile(df$income, c(.25, .5, .75)) \033[0m", '\n')
 cat("\033[1;34m 또는, cn<-c(23.175, 45.700, 61.775 ) \033[0m", '\n')
      cat("\033[1;31m # ---------------------------------------------------------------------- ", '\n')
-     cat("\033[1;34m df<-mkgroup(df, 변수명, cn) \033[0m", '\n')
-     cat("\033[1;34m df, 변수명, cn=Cutting Number, 숫자가 없으면'<' \033[0m", '\n')
+     cat("\033[1;34m df<-mkgroup(df, income, cn) \033[0m", '\n')
+     cat("\033[1;34m df, income, cn=Cutting Number, if there is no number then '<' \033[0m", '\n')
      cat("\033[1;31m # ---------------------------------------------------------------------- ", '\n')
-     cat("\033[1;34m df<-mkgroup(df, 변수명, cn, 2) \033[0m", '\n')
-     cat("\033[1;34m df, 변수명, cn=Cutting Number, 숫자가 2면'<=' \033[0m", '\n')
+     cat("\033[1;34m df<-mkgroup(df, income, cn, 2) \033[0m", '\n')
+     cat("\033[1;34m df, income, cn=Cutting Number, number is 2 then '<=' \033[0m", '\n')
 return(cat(" ") ) }
 
 c2n <- function(x_x01){
@@ -21,7 +21,6 @@ tmp<-as.numeric(factor(x_x01, levels=groups))
 var_name <- deparse(substitute(select_columns))
 
 ##-----------------------------------
-# 변수명을 컬럼 번호로 변경시키는 함수
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
@@ -33,7 +32,6 @@ if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
 }
 
 ##----------------------------------------
-# find_col2()를 사용해 컬럼번호 찾기
 select_columns<-find_col2(name_dataset, var_name)
 ##----------------------------------------
 

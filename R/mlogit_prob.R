@@ -1,5 +1,5 @@
 mlogit_prob <- function(LogitResult, my_input=NULL) {
-
+ 
 if (base::missing(LogitResult)) {
 cat(" \033[1;32m# 명령문 예제 ---------- \033[0m", '\n' )
 cat(" \033[1;32m new_data <- data.frame( \033[0m", '\n' )
