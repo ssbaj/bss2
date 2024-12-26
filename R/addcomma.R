@@ -6,7 +6,7 @@ no_spaces <- gsub(" ,", ",", no_spaces)
 no_spaces <- gsub(", ", ",", no_spaces)
 no_spaces <- gsub(",+", ",", no_spaces)
 no_spaces <- gsub(" ", ",", no_spaces)
-# ¹®ÀÚ¿­ ¾ç³¡¿¡ ºÒÇÊ¿äÇÑ ÄÞ¸¶ Á¦°Å (¼±ÅÃ »çÇ×)
+# ë¬¸ìžì—´ ì–‘ëì— ë¶ˆí•„ìš”í•œ ì½¤ë§ˆ ì œê±° (ì„ íƒ ì‚¬í•­)
 cleaned_string <- gsub("^,|,$", "", no_spaces)
 return(cleaned_string)
 }

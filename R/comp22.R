@@ -1,5 +1,5 @@
 comp22 <- function(dataset_name, ...) {
-
+ 
 if (base::missing(dataset_name)) {
 cat(" \033[1;36m# Examples ---------- \033[0m", '\n' )
 cat(" \033[1;36mdf <- comp22(Adata, gender, debt) \033[0m", '\n' )
@@ -19,7 +19,7 @@ cleaned_dataset<-comp21(dataset)
 }
 
 if(decision==0) {
-var_names <- as.character(substitute(list(...)))[-1] # Ã¹ ¹øÂ° Ç×¸ñÀº "list"
+var_names <- as.character(substitute(list(...)))[-1] # ì²« ë²ˆì§¸ í•­ëª©ì€ "list"
 cleaned_dataset <- dataset[complete.cases(dataset[var_names]), ]
 }
 

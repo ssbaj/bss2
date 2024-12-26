@@ -1,9 +1,9 @@
 mkgroup<-function(name_dataset, select_columns, CuttingNumber, sign=1) {
-
+ 
 if (base::missing(name_dataset)) {
      cat("\033[1;31m # ---------------------------------------------------------------------- ", '\n')
      cat("\033[1;34m cn<-quantile(df$income, c(.25, .5, .75)) \033[0m", '\n')
-cat("\033[1;34m ¶Ç´Â, cn<-c(23.175, 45.700, 61.775 ) \033[0m", '\n')
+cat("\033[1;34m ë˜ëŠ”, cn<-c(23.175, 45.700, 61.775 ) \033[0m", '\n')
      cat("\033[1;31m # ---------------------------------------------------------------------- ", '\n')
      cat("\033[1;34m df<-mkgroup(df, income, cn) \033[0m", '\n')
      cat("\033[1;34m df, income, cn=Cutting Number, if there is no number then '<' \033[0m", '\n')
@@ -24,7 +24,7 @@ var_name <- deparse(substitute(select_columns))
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
-n<-length(tmp_colnames) # DataSetÀÇ ÃÑº¯¼ö °¹¼ö
+n<-length(tmp_colnames) # DataSetì˜ ì´ë³€ìˆ˜ ê°¯ìˆ˜
 
 for(i in 1:n){
 if(index_id==tmp_colnames[i]) {return(as.numeric(i))}

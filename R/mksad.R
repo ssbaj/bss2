@@ -1,15 +1,15 @@
 mksad<-function(df, DATE_col, data_col, SeaMethod=1 , ma.method=5) {
-
+ 
 if (base::missing(df)) {
-    cat("\033[1;31m # ½Ã°è¿­ ÀÚ·áÀÇ °èÀýÁ¶Á¤ ------------- \033[0m ", '\n')
-    cat("\033[1;32m # mkdate_series·Î DATEº¯¼ö ¸¸µé±â : df<-mkdate_series(df, ½ÃÀÛ¿¬µµ:2015, ½ÃÀÛ´Þ:11, ¿ùÀÚ·á:12) \033[0m ", '\n')
-    cat("\033[1;32m # Quarterly ÀÎÁö Monthly µ¥ÀÌÅÍÀÎÁö´Â DATE°ªÀ» º¸°í ÀÚµ¿ ÆÇµ¶ÇÔ \033[0m ", '\n')
-    cat("\033[1;31m ¹æ¹ý1) x11À¸·Î °èÀýÁ¶Á¤: df<-mksad(df, DATEº¯¼ö¸í, dataº¯¼ö¸í) \033[0m ", '\n')
-cat("\033[1;31m ¹æ¹ý2) ÀÌµ¿Æò±Õ¹ýÀ¸·Î seasonal adjust ¿É¼Ç ÁöÁ¤ ÇÏ±â ---------- \033[0m ", '\n')
-cat(" 5±â°£ ÀÌµ¿Æò±Õ: df<-mksad(df, DATEº¯¼ö¸í, dataº¯¼ö¸í, 2 ) ", '\n')
-cat(" 5±â°£ ¿ÜÀÇ ÀÌµ¿Æò±Õ: df<-mksad(df, DATEº¯¼ö¸í, dataº¯¼ö¸í, 2 , ma.method=ÀÌµ¿Æò±Õ_±â°£/µðÆúÆ®_5±â°£ ) ", '\n')
-cat(" (1) adjusting.methodÀÇ µðÆúÆ®´Â 1(=x11¹æ¹ý), 2(=ÀÌµ¿Æò±Õ¹ý) ", '\n')
-return(cat(" (2) ÀÌµ¿Æò±Õ¹ý »ç¿ë½Ã, 3±â°£À¸·Î ÇÏ·Á¸é ma.method=3 / 7±â°£Àº ma.method=7 ) ", '\n'))
+    cat("\033[1;31m # ì‹œê³„ì—´ ìžë£Œì˜ ê³„ì ˆì¡°ì • ------------- \033[0m ", '\n')
+    cat("\033[1;32m # mkdate_seriesë¡œ DATEë³€ìˆ˜ ë§Œë“¤ê¸° : df<-mkdate_series(df, ì‹œìž‘ì—°ë„:2015, ì‹œìž‘ë‹¬:11, ì›”ìžë£Œ:12) \033[0m ", '\n')
+    cat("\033[1;32m # Quarterly ì¸ì§€ Monthly ë°ì´í„°ì¸ì§€ëŠ” DATEê°’ì„ ë³´ê³  ìžë™ íŒë…í•¨ \033[0m ", '\n')
+    cat("\033[1;31m ë°©ë²•1) x11ìœ¼ë¡œ ê³„ì ˆì¡°ì •: df<-mksad(df, DATEë³€ìˆ˜ëª…, dataë³€ìˆ˜ëª…) \033[0m ", '\n')
+cat("\033[1;31m ë°©ë²•2) ì´ë™í‰ê· ë²•ìœ¼ë¡œ seasonal adjust ì˜µì…˜ ì§€ì • í•˜ê¸° ---------- \033[0m ", '\n')
+cat(" 5ê¸°ê°„ ì´ë™í‰ê· : df<-mksad(df, DATEë³€ìˆ˜ëª…, dataë³€ìˆ˜ëª…, 2 ) ", '\n')
+cat(" 5ê¸°ê°„ ì™¸ì˜ ì´ë™í‰ê· : df<-mksad(df, DATEë³€ìˆ˜ëª…, dataë³€ìˆ˜ëª…, 2 , ma.method=ì´ë™í‰ê· _ê¸°ê°„/ë””í´íŠ¸_5ê¸°ê°„ ) ", '\n')
+cat(" (1) adjusting.methodì˜ ë””í´íŠ¸ëŠ” 1(=x11ë°©ë²•), 2(=ì´ë™í‰ê· ë²•) ", '\n')
+return(cat(" (2) ì´ë™í‰ê· ë²• ì‚¬ìš©ì‹œ, 3ê¸°ê°„ìœ¼ë¡œ í•˜ë ¤ë©´ ma.method=3 / 7ê¸°ê°„ì€ ma.method=7 ) ", '\n'))
 }
 
 
@@ -28,17 +28,17 @@ install.packages("forecast")
 }
 
 
-## º¯¼ö¸í¿¡ È¬µû¿ÈÇ¥¸¦ ºÙ¿© ¹®ÀÚ·Î ¹Ù²Ù´Â ¸í·É¹®
+## ë³€ìˆ˜ëª…ì— í™‘ë”°ì˜´í‘œë¥¼ ë¶™ì—¬ ë¬¸ìžë¡œ ë°”ê¾¸ëŠ” ëª…ë ¹ë¬¸
 
 data_col <- deparse(substitute(data_col))
 DATE_col<-deparse(substitute(DATE_col))
 
 ##-----------------------------------
-# º¯¼ö¸íÀ» ÄÃ·³ ¹øÈ£·Î º¯°æ½ÃÅ°´Â ÇÔ¼ö
+# ë³€ìˆ˜ëª…ì„ ì»¬ëŸ¼ ë²ˆí˜¸ë¡œ ë³€ê²½ì‹œí‚¤ëŠ” í•¨ìˆ˜
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
-n<-length(tmp_colnames) # DataSetÀÇ ÃÑº¯¼ö °¹¼ö
+n<-length(tmp_colnames) # DataSetì˜ ì´ë³€ìˆ˜ ê°¯ìˆ˜
 
 for(i in 1:n){
 if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
@@ -46,13 +46,13 @@ if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
 }
 
 ##----------------------------------------
-# find_col2()¸¦ »ç¿ëÇØ ÄÃ·³¹øÈ£ Ã£±â
+# find_col2()ë¥¼ ì‚¬ìš©í•´ ì»¬ëŸ¼ë²ˆí˜¸ ì°¾ê¸°
 if(is.numeric(DATE_col)==F) {DATE_col<-find_col2(df, DATE_col) }
 ##----------------------------------------
 
 
 ##----------------------------------------
-# find_col2()¸¦ »ç¿ëÇØ ÄÃ·³¹øÈ£ Ã£±â
+# find_col2()ë¥¼ ì‚¬ìš©í•´ ì»¬ëŸ¼ë²ˆí˜¸ ì°¾ê¸°
 if(is.numeric(data_col)==F) {data_col<-find_col2(df, data_col) }
 ##----------------------------------------
 
@@ -60,7 +60,7 @@ library(dplyr)
 df<-as.data.frame(df)
 
 if( class(df[ ,DATE_col])!="Date") {
-cat(' 2¹øÂ° columnÀÇ µ¥ÀÌÅÍ ÇüÅÂ°¡ Date°¡ ¾Æ´Õ´Ï´Ù', '\n')
+cat(' 2ë²ˆì§¸ columnì˜ ë°ì´í„° í˜•íƒœê°€ Dateê°€ ì•„ë‹™ë‹ˆë‹¤', '\n')
 break }
 
 month_count<-NA
@@ -80,19 +80,19 @@ if(length(month_type)>4) { FREQ=12 } else { FREQ=4 }
 year_start<-as.numeric(substring(df[1, DATE_col], 1,4))
 month_start<-as.numeric(substring(df[1, DATE_col], 6,7))
 
-target_variable<-ts(df[,data_col], start=c(year_start, month_start), freq=FREQ) # Æ¯Á¤ data¸¦ ÁöÁ¤ÇÑ´Ù
+target_variable<-ts(df[,data_col], start=c(year_start, month_start), freq=FREQ) # íŠ¹ì • dataë¥¼ ì§€ì •í•œë‹¤
 
 if(SeaMethod==1){
 fit_target_variable <- target_variable%>%seasonal::seas(x11='')
 x11_sa <- forecast::seasadj(fit_target_variable)
 df<-cbind(df, x11_sa)
-df$x11_sa<-ts( df$x11_sa, start=c(year_start, month_start), freq=FREQ) # Æ¯Á¤ data¸¦ ÁöÁ¤ÇÑ´Ù
+df$x11_sa<-ts( df$x11_sa, start=c(year_start, month_start), freq=FREQ) # íŠ¹ì • dataë¥¼ ì§€ì •í•œë‹¤
 return(df)
 }
 
 
 if(SeaMethod == 2){
-# ¹æ¹ý2: data_5mv()´Â forecastÀÇ ma()¿Í µ¿ÀÏÇÑ ¸í·É¹®
+# ë°©ë²•2: data_5mv()ëŠ” forecastì˜ ma()ì™€ ë™ì¼í•œ ëª…ë ¹ë¬¸
 # library(forecast)
 cat('Period for moving average:', ma.method, '\n' )
 ma_sa <- forecast::ma(target_variable, ma.method)
