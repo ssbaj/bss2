@@ -1,19 +1,19 @@
 sel22 <- function(dataset_name, ...) {
- 
+
 if (base::missing(dataset_name)) {
-cat(" \033[1;36m# ¸í·É¹® ¿¹Á¦ ---------- \033[0m", '\n' )
-return( cat(" \033[1;36mdf <- sel22(Adata, º¯¼ö1, º¯¼ö2) \033[0m", '\n' )) }
+cat(" \033[1;36m# ëª…ë ¹ë¬¸ ì˜ˆì œ ---------- \033[0m", '\n' )
+return( cat(" \033[1;36mdf <- sel22(Adata, ë³€ìˆ˜1, ë³€ìˆ˜2) \033[0m", '\n' )) }
 
 if(missing(...) ) { stop(paste("Error: Variables are not litsed.")) }
 
-# µ¥ÀÌÅÍ¼Â ÀÌ¸§À» ¹®ÀÚ¿­·Î º¯È¯ ÈÄ ½ÇÁ¦ °´Ã¼·Î °¡Á®¿À±â
+# ë°ì´í„°ì…‹ ì´ë¦„ì„ ë¬¸ìžì—´ë¡œ ë³€í™˜ í›„ ì‹¤ì œ ê°ì²´ë¡œ ê°€ì ¸ì˜¤ê¸°
 dataset_name <- deparse(substitute(dataset_name))
 dataset <- get(dataset_name)
 
-# ¼±ÅÃµÈ º¯¼ö ÀÌ¸§À» °¡Á®¿À±â
-var_names <- as.character(substitute(list(...)))[-1] # Ã¹ ¹øÂ° Ç×¸ñÀº "list"
+# ì„ íƒëœ ë³€ìˆ˜ ì´ë¦„ì„ ê°€ì ¸ì˜¤ê¸°
+var_names <- as.character(substitute(list(...)))[-1] # ì²« ë²ˆì§¸ í•­ëª©ì€ "list"
 
-# »õ·Î¿î µ¥ÀÌÅÍ¼Â »ý¼º
+# ìƒˆë¡œìš´ ë°ì´í„°ì…‹ ìƒì„±
 selected_dataset <- dataset[, var_names, drop = FALSE]
 
 return(selected_dataset)

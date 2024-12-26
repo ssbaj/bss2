@@ -1,5 +1,5 @@
 mklog<-function(name_dataset, select_columns) {
-
+ 
 if (base::missing(name_dataset)) {
 cat(" df<-mklog(df, variable) *NOTE: variable to make natural log-transformation ", '\n')
     cat(" \033[1;34m# Values should be greater than 1.0. Please check the value with min(). \033[0m ", '\n')
@@ -15,7 +15,7 @@ select_columns <- deparse(substitute(select_columns))
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
-n<-length(tmp_colnames) # DataSetÀÇ ÃÑº¯¼ö °¹¼ö
+n<-length(tmp_colnames) # DataSetì˜ ì´ë³€ìˆ˜ ê°¯ìˆ˜
 
 for(i in 1:n){
 if(index_id==tmp_colnames[i]) {return(as.numeric(i))}

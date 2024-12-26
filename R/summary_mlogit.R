@@ -1,19 +1,19 @@
 summary_mlogit <- function(model) {
- 
+
 if (base::missing(model)) {
-cat(" \033[1;36m# ¸í·É¹® ¿¹Á¦ ---------- \033[0m", '\n' )
-return( cat("\033[1;36m ¸í·É¹®: summary_logit(multinomºÐ¼®°á°ú) \033[0m", '\n') )
+cat(" \033[1;36m# ëª…ë ¹ë¬¸ ì˜ˆì œ ---------- \033[0m", '\n' )
+return( cat("\033[1;36m ëª…ë ¹ë¬¸: summary_logit(multinomë¶„ì„ê²°ê³¼) \033[0m", '\n') )
 }
 
 suppressPackageStartupMessages(library("dplyr"))
 
-# °è¼ö, Ç¥ÁØ¿ÀÂ÷, z°ª, p°ª °è»ê
+# ê³„ìˆ˜, í‘œì¤€ì˜¤ì°¨, zê°’, pê°’ ê³„ì‚°
 coef_matrix <- coef(model)
 se_matrix <- summary(model)$standard.errors
 z_matrix <- coef_matrix / se_matrix
 p_matrix <- (1 - pnorm(abs(z_matrix), 0, 1)) * 2
 
-# °¢ Á¾¼Óº¯¼ö ¹üÁÖ¿¡ ´ëÇÑ °á°ú Ãâ·Â
+# ê° ì¢…ì†ë³€ìˆ˜ ë²”ì£¼ì— ëŒ€í•œ ê²°ê³¼ ì¶œë ¥
 for (i in 1:nrow(coef_matrix)) {
 category <- rownames(coef_matrix)[i]
 cat("\nResults for category:", category, "\n")
@@ -27,7 +27,7 @@ mutate(across(where(is.numeric), ~round(., 4)))
 print(results)
 }
 
-# ¸ðµ¨ ¿ä¾à Á¤º¸ Ãâ·Â
+# ëª¨ë¸ ìš”ì•½ ì •ë³´ ì¶œë ¥
 cat("\n<< Model Summary >>\n")
 cat(" Number of observations:", nrow(model$fitted.values), "\n")
 cat(" AIC:", AIC(model), "\n")

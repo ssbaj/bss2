@@ -1,16 +1,16 @@
 mlogit_prob <- function(LogitResult, my_input=NULL) {
- 
+
 if (base::missing(LogitResult)) {
-cat(" \033[1;32m# ¸í·É¹® ¿¹Á¦ ---------- \033[0m", '\n' )
+cat(" \033[1;32m# ëª…ë ¹ë¬¸ ì˜ˆì œ ---------- \033[0m", '\n' )
 cat(" \033[1;32m new_data <- data.frame( \033[0m", '\n' )
-cat(" \033[1;32m gender = rep('³²¼º', 61), \033[0m", '\n' )
+cat(" \033[1;32m gender = rep('ë‚¨ì„±', 61), \033[0m", '\n' )
 cat(" \033[1;32m age = rep(30, 61), \033[0m", '\n' )
 cat(" \033[1;32m income = seq(2000, 8000, 100) \033[0m", '\n' )
 cat(" \033[1;32m ) \033[0m", '\n' )
-return( cat("\033[1;33m ¸í·É¹®: mlogit_prob(multinomºÐ¼®°á°ú, new_data) \033[0m", '\n') )
+return( cat("\033[1;33m ëª…ë ¹ë¬¸: mlogit_prob(multinomë¶„ì„ê²°ê³¼, new_data) \033[0m", '\n') )
 }
 
-# ¿¹Ãø È®·ü °è»ê
+# ì˜ˆì¸¡ í™•ë¥  ê³„ì‚°
 
 r=c()
 max.ylev<-2
@@ -27,9 +27,9 @@ r[1]<-1
 
 probs <- predict(LogitResult, newdata = my_input, type = "probs")
 
-# °á°ú¸¦ µ¥ÀÌÅÍÇÁ·¹ÀÓÀ¸·Î º¯È¯
+# ê²°ê³¼ë¥¼ ë°ì´í„°í”„ë ˆìž„ìœ¼ë¡œ ë³€í™˜
 result <- as.data.frame(probs)
 
-# ÀÔ·Â µ¥ÀÌÅÍ¿Í °á°ú¸¦ °áÇÕ
+# ìž…ë ¥ ë°ì´í„°ì™€ ê²°ê³¼ë¥¼ ê²°í•©
 cbind(my_input, result)
 }
