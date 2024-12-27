@@ -11,17 +11,13 @@ return( cat("\033[1;36m COMMAND: Adata<-mkdum22(Adata, variable) \033[0m", '\n')
 find_col2<-function(DataSet, index_id ){
 tmp_colnames<-colnames(DataSet)
 n<-length(tmp_colnames)
-
 for(i in 1:n){
-if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
+  if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
 }
 }
-
 
 var_name <- deparse(substitute(select_columns))
 
-
-##----------------------------------------
 select_columns<-find_col2(name_dataset, var_name)
 ##----------------------------------------
 

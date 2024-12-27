@@ -1,23 +1,29 @@
 recoding<-function(name_dataset,  select_columns ) {
 
 if (base::missing(name_dataset)) {
-        cat("  df<-as.data.frame(df)", '\n')
-        return( cat("  df<-recoding(df, 변수명 또는 컬럼번호) ", '\n') )
+        cat("\033[1;32m# 명령문 예제 -------- \033[0m ", '\n')
+		cat("\033[1;32m  df<-as.data.frame(df) \033[0m ", '\n')
+        return( cat("\033[1;32m  df<-recoding(df, 변수명) \033[0m ", '\n') )
     }
+
+cat("\033[1;31m## 문자 레코드를 숫자로 바꾸기 --------\033[0m ", '\n')
 
 ##-----------------------------------
 # 변수명을 컬럼 번호로 변경시키는 함수
 ##------------------------------------
 find_col2<-function(DataSet, index_id ){
-  tmp<-DataSet
-  rm(DataSet)
-  tmp_colnames<-colnames(tmp)
-  n<-length(tmp_colnames)  # DataSet의 총변수 갯수
-  
-  for(i in 1:n){
-    if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
-  }
+tmp_colnames<-colnames(DataSet)
+n<-length(tmp_colnames)
+for(i in 1:n){
+  if(index_id==tmp_colnames[i]) {return(as.numeric(i))}
 }
+}
+
+var_name <- deparse(substitute(select_columns))
+
+select_columns<-find_col2(name_dataset, var_name)
+##----------------------------------------
+
 
 if(is.numeric(select_columns)==F) {select_columns<-find_col2(name_dataset, select_columns) }
 

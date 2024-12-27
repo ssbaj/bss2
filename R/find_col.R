@@ -13,5 +13,6 @@ var_names <- as.character(substitute(list(...)))[-1]
 column_indices <- match(var_names, names(dataset))
 
 return(setNames(column_indices, var_names))
+
 }
 

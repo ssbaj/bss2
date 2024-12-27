@@ -1,6 +1,6 @@
-mlogit_prob <- function(LogitResult, my_input=NULL) {
+mlogit_prob <- function(mLogitResult, my_input=NULL) {
 
-if (base::missing(LogitResult)) {
+if (base::missing(mLogitResult)) {
 cat(" \033[1;32m# 명령문 예제 ---------- \033[0m", '\n' )
 cat(" \033[1;32m new_data <- data.frame( \033[0m", '\n' )
 cat(" \033[1;32m gender = rep('남성', 61), \033[0m", '\n' )
@@ -12,20 +12,7 @@ return( cat("\033[1;33m 명령문: mlogit_prob(multinom분석결과, new_data) \
 
 # 예측 확률 계산
 
-r=c()
-max.ylev<-2
-nvariables<-LogitResult$rank
-tmp_r=c()
-
-# median( eval(parse(text = tmp[1])) )
-
-for(i in 1:nvariables){
-if( ( nrow(unique(LogitResult$model[i])) > max.ylev )  ) { r=c(r, median(LogitResult$model[, i])) }
-else {r<-c(r, 0)} }
-r[1]<-1
-
-
-probs <- predict(LogitResult, newdata = my_input, type = "probs")
+probs <- predict(mLogitResult, newdata = my_input, type = "probs")
 
 # 결과를 데이터프레임으로 변환
 result <- as.data.frame(probs)

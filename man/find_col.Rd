@@ -9,9 +9,9 @@ find column number
 }
 \examples{
 
-# Adata에서 브랜드명이 GM인 경우, 가격만족도 추출하기
+# Dataset에서 각 변수들이 몇 번째 컬럼에 있는지 알아내는 명령문
 
-find_col(Dataset, variable1, variable2)
+find_col(Dataset, variable1, variable2, ....)
 
 Then, you get column index numbers
 
