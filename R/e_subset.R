@@ -3,7 +3,7 @@ e_subset<-function(explaining=0){
 if(explaining==0) {
 cat("  ", '\n')
 cat("\033[1;31m## subset 데이터 -------- \033[0m", '\n')
-cat("  library(aj412s) ", '\n')
+cat("  library(bss2) ", '\n')
 cat("    subset(BasicData, (brand=='KIA' | brand=='GM') , select=c(1,2,3,4)) ", '\n')
 cat("    # select=c(1,2,3,4))는 1번 변수부터 4번 변수만 솎아내라는 명령문 ", '\n')
 cat("    subset(BasicData, grepl('K', BasicData$brand) , select=c(1,2,3,4)) ", '\n')
